@@ -1,15 +1,15 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from 'react';
 
 function Questions({ questionList }) {
   // pick a question
-  const question = questionList[Math.floor(Math.random() * 10) % 5];
-
+  const question = questionList[Math.floor(Math.random() * 12)];
   return (
     <div>
-      <img src={question.img} alt="Celebrity" />
+      <img src={question.img} alt="Celebrity" height="200" />
       <form>
         <p>Your Answer</p>
         <div>
@@ -56,6 +56,7 @@ function Questions({ questionList }) {
   );
 }
 
+/*
 Questions.defaultProps = {
   questionList: null,
 };
@@ -69,5 +70,5 @@ Questions.propTypes = {
     option4: PropTypes.string(),
   })),
 };
-
+*/
 export default Questions;

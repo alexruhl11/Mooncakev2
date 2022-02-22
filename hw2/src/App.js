@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
 import Questions from './Questions';
-import questionList from './Questions.json';
+import quiz from './quiz.json';
 
 function App() {
   return (
-    <div className="App">
-      hello
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/LeBron_James_crop.jpg" alt="hi" />
-      <Questions questionList={questionList} />
+    <div>
+      <Questions questionList={quiz} />
     </div>
   );
 }
