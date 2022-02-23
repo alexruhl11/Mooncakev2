@@ -17,6 +17,7 @@ export default class Quiz extends PureComponent {
       question: [],
       score: 0,
       selectedAnswer: '',
+      questionNum: 0,
     };
   }
 
@@ -28,7 +29,14 @@ export default class Quiz extends PureComponent {
     if (this.state.selectedAnswer === this.state.question.correct) {
       this.setState((prevstate) => ({ score: prevstate.score + 1 }));
     }
-    this.setState({ question: this.props.questionList[Math.floor(Math.random() * 12)] });
+    this.setState((prevstate) => ({
+      question: this.props.questionList[Math.floor(Math.random() * 12)],
+      questionNum: prevstate.questionNum + 1,
+    }));
+
+    if (this.state.questionNum >= 10) {
+      alert('end game');
+    }
   };
 
   handleChange = (e) => {
