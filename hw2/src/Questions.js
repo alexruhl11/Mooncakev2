@@ -2,12 +2,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function Questions({ questionList }) {
   // pick a question
   const question = questionList[Math.floor(Math.random() * 12)];
+  const [score, setScore] = useState(0);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setScore(score + 1);
+  }
+
   return (
     <div>
       <div>
@@ -18,7 +25,7 @@ function Questions({ questionList }) {
         </div>
         <div className="box">
           <div className="text">
-            Current Score
+            {`Current Score: ${score}`}
           </div>
         </div>
         <div className="box">
@@ -42,16 +49,28 @@ function Questions({ questionList }) {
       <img className="image" src={question.img} alt="Celebrity" />
       <form>
         <p>Your Answer</p>
-        <div className="buttons">
-          <button className="action_button" type="button">{question.option1}</button>
-          <button className="action_button" type="button">{question.option2}</button>
-        </div>
-        <div className="buttons">
-          <button className="action_button" type="button">{question.option3}</button>
-          <button className="action_button" type="button">{question.option4}</button>
-        </div>
-        <button type="submit">Submit </button>
+        <label className="container">
+          {question.option1}
+          <input type="radio" name="ans" id="opt1" />
+          <span className="checkmark" />
+        </label>
+        <label className="container">
+          {question.option2}
+          <input type="radio" name="ans" id="opt2" />
+          <span className="checkmark" />
+        </label>
+        <label className="container">
+          {question.option3}
+          <input type="radio" name="ans" id="opt3" />
+          <span className="checkmark" />
+        </label>
+        <label className="container">
+          {question.option4}
+          <input type="radio" name="ans" id="opt4" />
+          <span className="checkmark" />
+        </label>
       </form>
+      <button type="submit" onClick={handleSubmit}>Submit</button>
     </div>
   );
 }
