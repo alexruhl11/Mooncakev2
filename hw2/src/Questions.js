@@ -42,43 +42,13 @@ function Questions({ questionList }) {
       <img className="image" src={question.img} alt="Celebrity" />
       <form>
         <p>Your Answer</p>
-        <div>
-          <label>
-            {question.option1}
-            <input
-              type="radio"
-              id="ans1"
-              name="ans"
-              value={question.option1}
-            />
-          </label>
-          <label>
-            {question.option2}
-            <input
-              type="radio"
-              id="ans2"
-              name="ans"
-              value={question.option2}
-            />
-          </label>
-          <label>
-            {question.option3}
-            <input
-              type="radio"
-              id="ans3"
-              name="ans"
-              value={question.option3}
-            />
-          </label>
-          <label>
-            {question.option4}
-            <input
-              type="radio"
-              id="ans4"
-              name="ans"
-              value={question.option4}
-            />
-          </label>
+        <div className="buttons">
+          <button className="action_button" type="button">{question.option1}</button>
+          <button className="action_button" type="button">{question.option2}</button>
+        </div>
+        <div className="buttons">
+          <button className="action_button" type="button">{question.option3}</button>
+          <button className="action_button" type="button">{question.option4}</button>
         </div>
         <button type="submit">Submit </button>
       </form>

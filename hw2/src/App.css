@@ -63,15 +63,22 @@
 }
 
 .buttons {
-  width: 200px;
+  width: 90%;
   margin: 0 auto;
-  display: inline;
+  display: flex;
+  justify-content: "center";
+  align-items: "center";
 }
   
-.action_btn {
-width: 200px;
-margin: 0 auto;
-display: inline;
+.action_button {
+  background-color: rgb(52, 120, 246);
+  color: white;
+  font-size: large;
+  margin: 5px 20px;
+  display: inline;
+  border: 1px solid black;
+  width: 50%;
+  height: 80px;
 }
 
 @keyframes App-logo-spin {
