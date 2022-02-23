@@ -3,13 +3,43 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import PropTypes from 'prop-types';
 import React from 'react';
+import './App.css';
 
 function Questions({ questionList }) {
   // pick a question
   const question = questionList[Math.floor(Math.random() * 12)];
   return (
     <div>
-      <img src={question.img} alt="Celebrity" height="200" />
+      <div>
+        <div className="box">
+          <div className="text">
+            Current User
+          </div>
+        </div>
+        <div className="box">
+          <div className="text">
+            Current Score
+          </div>
+        </div>
+        <div className="box">
+          <div className="text">
+            User Best Score
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="box2">
+          <div className="text">
+            Current User
+          </div>
+        </div>
+        <div className="box2">
+          <div className="text">
+            Current Score
+          </div>
+        </div>
+      </div>
+      <img className="image" src={question.img} alt="Celebrity" />
       <form>
         <p>Your Answer</p>
         <div>
