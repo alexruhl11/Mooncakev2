@@ -21,17 +21,19 @@ export default class Quiz extends PureComponent {
   }
 
   componentDidMount() {
-    this.setState({ question: this.props.questionList[1] });
+    this.setState({ question: this.props.questionList[Math.floor(Math.random() * 12)], score: 0, selectedAnswer: '' });
   }
 
-  /*
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit = () => {
     if (this.state.selectedAnswer === this.state.question.correct) {
       this.setState((prevstate) => ({ score: prevstate.score + 1 }));
     }
-  }
-  */
+    this.setState({ question: this.props.questionList[Math.floor(Math.random() * 12)] });
+  };
+
+  handleChange = (e) => {
+    this.setState({ selectedAnswer: e.target.id });
+  };
 
   render() {
     return (
@@ -71,25 +73,26 @@ export default class Quiz extends PureComponent {
           <p>Your Answer</p>
           <label className="container">
             {this.state.question.option1}
-            <input type="radio" name="ans" id="option1" />
+            <input type="radio" name="ans" id="option1" onChange={this.handleChange} />
             <span className="checkmark" />
           </label>
           <label className="container">
             {this.state.question.option2}
-            <input type="radio" name="ans" id="option2" />
+            <input type="radio" name="ans" id="option2" onChange={this.handleChange} />
             <span className="checkmark" />
           </label>
           <label className="container">
             {this.state.question.option3}
-            <input type="radio" name="ans" id="option3" />
+            <input type="radio" name="ans" id="option3" onChange={this.handleChange} />
             <span className="checkmark" />
           </label>
           <label className="container">
             {this.state.question.option4}
-            <input type="radio" name="ans" id="option4" />
+            <input type="radio" name="ans" id="option4" onChange={this.handleChange} />
             <span className="checkmark" />
           </label>
         </form>
+        <button type="submit" onClick={this.handleSubmit}>submit</button>
       </div>
 
     );
