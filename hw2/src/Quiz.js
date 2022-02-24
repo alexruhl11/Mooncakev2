@@ -2,103 +2,89 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/prop-types */
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import './App.css';
 
-export default class Quiz extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: [],
-      score: 0,
-      selectedAnswer: '',
-      questionNum: 0,
-    };
-  }
+function Quiz(props) {
+  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [questionNum, setQuestionNum] = useState(0);
+  const [question, setQuestion] = useState(props.questionList[Math.floor(Math.random() * 12)]);
 
-  componentDidMount() {
-    this.setState({ question: this.props.questionList[Math.floor(Math.random() * 12)], score: 0, selectedAnswer: '' });
-  }
-
-  handleSubmit = () => {
-    if (this.state.selectedAnswer === this.state.question.correct) {
-      this.setState((prevstate) => ({ score: prevstate.score + 1 }));
+  const handleSubmit = () => {
+    if (selectedAnswer === question.correct) {
+      setScore(score + 1);
     }
-    this.setState((prevstate) => ({
-      question: this.props.questionList[Math.floor(Math.random() * 12)],
-      questionNum: prevstate.questionNum + 1,
-    }));
+    setQuestionNum(questionNum + 1);
+    setQuestion(props.questionList[Math.floor(Math.random() * 12)]);
 
-    if (this.state.questionNum >= 10) {
+    if (questionNum > 10) {
       alert('end game');
     }
   };
 
-  handleChange = (e) => {
-    this.setState({ selectedAnswer: e.target.id });
+  const handleChange = (e) => {
+    setSelectedAnswer(e.target.id);
   };
 
-  render() {
-    return (
-
+  return (
+    <div>
       <div>
-        <div>
-          <div className="box">
-            <div className="text">
-              Current User
-            </div>
-          </div>
-          <div className="box">
-            <div className="text">
-              {`Current Score: ${this.state.score}`}
-            </div>
-          </div>
-          <div className="box">
-            <div className="text">
-              User Best Score
-            </div>
+        <div className="box">
+          <div className="text">
+            Current User
           </div>
         </div>
-        <div>
-          <div className="box2">
-            <div className="text">
-              Current User
-            </div>
-          </div>
-          <div className="box2">
-            <div className="text">
-              Current Score
-            </div>
+        <div className="box">
+          <div className="text">
+            {`Current Score: ${score}`}
           </div>
         </div>
-        <img className="image" src={this.state.question.img} alt="Celebrity" />
-        <form>
-          <p>Your Answer</p>
-          <label className="container">
-            {this.state.question.option1}
-            <input type="radio" name="ans" id="option1" onChange={this.handleChange} />
-            <span className="checkmark" />
-          </label>
-          <label className="container">
-            {this.state.question.option2}
-            <input type="radio" name="ans" id="option2" onChange={this.handleChange} />
-            <span className="checkmark" />
-          </label>
-          <label className="container">
-            {this.state.question.option3}
-            <input type="radio" name="ans" id="option3" onChange={this.handleChange} />
-            <span className="checkmark" />
-          </label>
-          <label className="container">
-            {this.state.question.option4}
-            <input type="radio" name="ans" id="option4" onChange={this.handleChange} />
-            <span className="checkmark" />
-          </label>
-        </form>
-        <button type="submit" onClick={this.handleSubmit}>submit</button>
+        <div className="box">
+          <div className="text">
+            User Best Score
+          </div>
+        </div>
       </div>
-
-    );
-  }
+      <div>
+        <div className="box2">
+          <div className="text">
+            Current User
+          </div>
+        </div>
+        <div className="box2">
+          <div className="text">
+            Current Score
+          </div>
+        </div>
+      </div>
+      <img className="image" src={question.img} alt="Celebrity" />
+      <form>
+        <p>Your Answer</p>
+        <label className="container">
+          {question.option1}
+          <input type="radio" name="ans" id="option1" onChange={handleChange} />
+          <span className="checkmark" />
+        </label>
+        <label className="container">
+          {question.option2}
+          <input type="radio" name="ans" id="option2" onChange={handleChange} />
+          <span className="checkmark" />
+        </label>
+        <label className="container">
+          {question.option3}
+          <input type="radio" name="ans" id="option3" onChange={handleChange} />
+          <span className="checkmark" />
+        </label>
+        <label className="container">
+          {question.option4}
+          <input type="radio" name="ans" id="option4" onChange={handleChange} />
+          <span className="checkmark" />
+        </label>
+      </form>
+      <button type="submit" onClick={handleSubmit}>submit</button>
+    </div>
+  );
 }
+export default Quiz;

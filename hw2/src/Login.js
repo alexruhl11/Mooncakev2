@@ -1,53 +1,56 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-export default class Login extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-    };
-  }
+function Login() {
+  const [username, setUsername] = useState('');
 
-  updateUsername = (e) => {
-    this.setState({ username: e.target.value });
+  const navigator = useNavigate();
+
+  const navigate = () => {
+    navigator('/quiz');
   };
 
-  login = () => {
-    if (this.state.username === '') {
+  const updateUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const login = () => {
+    if (username === '') {
       alert('enter valid username');
       return;
     }
 
-    if (localStorage.getItem(this.state.username) !== null) {
+    if (localStorage.getItem(username) !== null) {
       // user already exists
-      alert(localStorage.getItem(this.state.username));
+      alert(localStorage.getItem(username));
     } else {
-      localStorage.setItem(this.state.username, '0');
+      localStorage.setItem(username, '0');
     }
-    console.log(this.state.username);
+    navigate();
   };
 
-  render() {
-    return (
-      <div className="Login">
-        <Form>
-          <Form.Group size="user" controlId="username">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              autoFocus
-              onChange={this.updateUsername}
-            />
-          </Form.Group>
-          <Button block size="lg" type="submit" onClick={this.login}>
-            Login
-          </Button>
-        </Form>
-      </div>
-    );
-  }
+  return (
+    <div className="Login">
+      <Form>
+        <Form.Group size="user" controlId="username">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            autoFocus
+            onChange={updateUsername}
+          />
+        </Form.Group>
+        <Button block size="lg" type="submit" onClick={login}>
+          Login
+        </Button>
+      </Form>
+    </div>
+  );
 }
+
+export default Login;
