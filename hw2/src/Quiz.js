@@ -1,11 +1,7 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/static-property-placement */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
 // import PropTypes from 'prop-types';
 import './App.css';

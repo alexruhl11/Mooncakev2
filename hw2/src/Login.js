@@ -18,8 +18,17 @@ export default class Login extends PureComponent {
   };
 
   login = () => {
-    alert(this.state.username);
-    localStorage.setItem('username', this.state.username);
+    if (this.state.username === '') {
+      alert('enter valid username');
+      return;
+    }
+
+    if (localStorage.getItem(this.state.username) !== null) {
+      // user already exists
+      alert(localStorage.getItem(this.state.username));
+    } else {
+      localStorage.setItem(this.state.username, '0');
+    }
     console.log(this.state.username);
   };
 
