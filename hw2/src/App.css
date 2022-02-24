@@ -137,6 +137,16 @@
 	background: white;
 }
 
+.Login {
+  padding: 60px 0;
+}
+
+.Login form {
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
