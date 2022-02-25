@@ -27,11 +27,16 @@ function Leaderboard() {
   }, []);
 
   return (
-    <ol>
-      {leaders.map((leader) => (
-        <li key={leader.key}>{leader.value}</li>
-      ))}
-    </ol>
+    <div className="leaderboardend">
+      <div className="text">
+        Leaderboard
+      </div>
+        <div><ol>
+          {leaders.map((leader) => (
+            <li key={leader.key}>{leader.value}</li>
+         ))}
+        </ol></div>
+    </div>
   );
 }
 
