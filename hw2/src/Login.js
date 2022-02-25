@@ -7,13 +7,20 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-function Login() {
+function Login(props) {
   const [username, setUsername] = useState('');
 
   const navigator = useNavigate();
 
   const navigate = () => {
-    navigator('/quiz');
+    navigator(
+      '/quiz',
+      {
+        state: 'rest',
+        questionList: props.questionList,
+        user: username,
+      },
+    );
   };
 
   const updateUsername = (e) => {
