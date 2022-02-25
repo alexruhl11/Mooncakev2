@@ -12,21 +12,24 @@ function Leaderboard() {
     let i = 0;
 
     while (i < keys.length) {
-      const key = keys[i];
-      archive.push(`${localStorage.getItem(key)} | ${key}`);
+      const user = keys[i];
+      archive.push({
+        key: Number(localStorage.getItem(user)),
+        value: `${user} | ${localStorage.getItem(user)}`,
+      });
       i += 1;
     }
 
-    archive.sort();
-    setLeaders(archive.slice(0, 10));
+    const users = archive.sort(((a, b) => b.key - a.key));
+    console.log(users);
 
-    console.log(leaders);
-  });
+    setLeaders(users);
+  }, []);
 
   return (
     <ol>
       {leaders.map((leader) => (
-        <li>{leader}</li>
+        <li key={leader.key}>{leader.value}</li>
       ))}
     </ol>
   );
