@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
+// import { useNavigate } from 'react-router-dom';
 import quiz from './quiz.json';
-import Quiz from './Quiz';
-// import Login from './Login';
-import Leaderboard from './Leaderboard';
 
 function App() {
+  // const navigate = useNavigate();
   return (
     <div>
-      <Quiz questionList={quiz} />
+      <Login questionList={quiz} />
     </div>
   );
 }
