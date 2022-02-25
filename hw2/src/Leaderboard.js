@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
-import quiz from './quiz.json';
+// import quiz from './quiz.json';
 // import PropTypes from 'prop-types';
 import './App.css';
 
@@ -28,11 +28,16 @@ function Leaderboard() {
   }, []);
 
   return (
-    <ol>
-      {leaders.map((leader) => (
-        <li key={leader.key}>{leader.value}</li>
-      ))}
-    </ol>
+    <div className="leaderboardend">
+      <div className="text">
+        Leaderboard
+      </div>
+        <div><ol>
+          {leaders.map((leader) => (
+            <li key={leader.key}>{leader.value}</li>
+         ))}
+        </ol></div>
+    </div>
   );
 }
 

@@ -59,6 +59,11 @@ function Quiz() {
             Best Score
           </div>
         </div>
+        <div className="whoisthisceleb">
+          <div className="text">
+            Who is this Celebrity?
+          </div>
+        </div>
       </div>
       <img className="image" src={question.img} alt="Celebrity" />
       <form>

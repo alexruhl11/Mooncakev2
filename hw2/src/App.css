@@ -36,6 +36,9 @@
   border: 1px solid black;
   border-radius:1px;
   border-color: black;
+  background: rgba(196, 196, 196, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 .box2 {
@@ -46,6 +49,43 @@
   border: 1px solid black;
   border-radius:1px;
   border-color: black;
+  background: rgba(196, 196, 196, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+.leaderboardend {
+  position: absolute;
+  height: 111px;
+  left: 281px;
+  right: 281px;
+  top: 110px;
+  margin: 20px;;
+
+
+  font-size: 30px;
+  line-height: 41px;
+  /* or 33% */
+
+  text-align: center;
+  letter-spacing: 0.374px;
+
+  color: #4B3187;
+}
+
+.whoisthisceleb {
+  margin: 1%;
+
+  font-size: 60px;
+  line-height: 22px;
+  /* or 22% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.408px;
+
+  color: #000000;
 }
 
 .text {
