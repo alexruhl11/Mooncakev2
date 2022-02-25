@@ -5,19 +5,20 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import './App.css';
+import quiz from './quiz.json';
 
-function Quiz(props) {
+function Quiz() {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [questionNum, setQuestionNum] = useState(0);
-  const [question, setQuestion] = useState(props.questionList[Math.floor(Math.random() * 12)]);
+  const [question, setQuestion] = useState(quiz[Math.floor(Math.random() * 12)]);
 
   const handleSubmit = () => {
     if (selectedAnswer === question.correct) {
       setScore(score + 1);
     }
     setQuestionNum(questionNum + 1);
-    setQuestion(props.questionList[Math.floor(Math.random() * 12)]);
+    setQuestion(quiz[Math.floor(Math.random() * 12)]);
 
     if (questionNum > 10) {
       alert('end game');
@@ -50,12 +51,12 @@ function Quiz(props) {
       <div>
         <div className="box2">
           <div className="text">
-            Current User
+            Best User
           </div>
         </div>
         <div className="box2">
           <div className="text">
-            Current Score
+            Best Score
           </div>
         </div>
       </div>

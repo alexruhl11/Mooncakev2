@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import Leaderboard from './Leaderboard';
+// import Leaderboard from './Leaderboard';
 // import { useNavigate } from 'react-router-dom';
-// import quiz from './quiz.json';
-// import Login from './Login';
+import quiz from './quiz.json';
+import Login from './Login';
 
 function App() {
   // const navigate = useNavigate();
   return (
     <div>
-      <Leaderboard />
+      <Login questionList={quiz} />
     </div>
   );
 }
