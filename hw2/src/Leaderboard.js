@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState } from 'react';
+import quiz from './quiz.json';
 // import PropTypes from 'prop-types';
 import './App.css';
 
