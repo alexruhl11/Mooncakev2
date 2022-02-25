@@ -3,6 +3,7 @@ import './App.css';
 import quiz from './quiz.json';
 import Quiz from './Quiz';
 // import Login from './Login';
+import Leaderboard from './Leaderboard';
 
 function App() {
   return (
@@ -11,5 +12,7 @@ function App() {
     </div>
   );
 }
+
+//Leaderboard leadersList
 
 export default App;
