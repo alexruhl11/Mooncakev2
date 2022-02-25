@@ -5,6 +5,7 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import './App.css';
+import { useNavigate } from 'react-router-dom';
 import quiz from './quiz.json';
 
 function Quiz() {
@@ -12,7 +13,8 @@ function Quiz() {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [questionNum, setQuestionNum] = useState(0);
   const [question, setQuestion] = useState(quiz[Math.floor(Math.random() * 12)]);
-
+  const [username] = useState(localStorage.getItem('currentUser'));
+  const navigator = useNavigate();
   const handleSubmit = () => {
     if (selectedAnswer === question.correct) {
       setScore(score + 1);
@@ -21,12 +23,18 @@ function Quiz() {
     setQuestion(quiz[Math.floor(Math.random() * 12)]);
 
     if (questionNum > 10) {
-      alert('end game');
+      if (Number(localStorage.getItem(username)) < score) {
+        localStorage.setItem(username, score);
+      }
+      navigator(
+        '/leaderboard',
+      );
     }
   };
 
   const handleChange = (e) => {
     setSelectedAnswer(e.target.id);
+    console.log(localStorage.getItem('currentUser'));
   };
 
   return (
@@ -34,7 +42,7 @@ function Quiz() {
       <div>
         <div className="box">
           <div className="text">
-            Current User
+            {username}
           </div>
         </div>
         <div className="box">
@@ -44,7 +52,7 @@ function Quiz() {
         </div>
         <div className="box">
           <div className="text">
-            User Best Score
+            {`Best Score: ${localStorage.getItem(username)}`}
           </div>
         </div>
       </div>

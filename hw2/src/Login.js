@@ -13,6 +13,7 @@ function Login(props) {
   const navigator = useNavigate();
 
   const navigate = () => {
+    localStorage.setItem('currentUser', username);
     navigator(
       '/quiz',
       {
@@ -35,9 +36,8 @@ function Login(props) {
 
     if (localStorage.getItem(username) !== null) {
       // user already exists
-      alert(localStorage.getItem(username));
     } else {
-      localStorage.setItem(username, JSON.stringify(Math.floor(Math.random() * 20)));
+      localStorage.setItem(username, 0);
     }
     navigate();
   };
