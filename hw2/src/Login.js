@@ -37,7 +37,7 @@ function Login(props) {
       // user already exists
       alert(localStorage.getItem(username));
     } else {
-      localStorage.setItem(username, '0');
+      localStorage.setItem(username, JSON.stringify(Math.floor(Math.random() * 20)));
     }
     navigate();
   };

@@ -1,44 +1,38 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { PureComponent } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import './App.css';
 
-export default class Leaderboard extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      top10array: [],
-    };
-  }
+function Leaderboard() {
+  const [leaders, setLeaders] = useState([]);
 
-  updateLeaderboard = () => {
-    this.setState({ top10array: this.props.leadersList });
-  };
+  useEffect(() => {
+    const archive = [];
+    const keys = Object.keys(localStorage);
+    let i = 0;
 
-  fetchLeaderboard = () => {
-    localStorage.getItem(this.state.username) !== null)
-      alert(localStorage.getItem(this.state.username));
-    console.log(this.state.top10array);
-  };
+    while (i < keys.length) {
+      const user = keys[i];
+      archive.push({
+        key: Number(localStorage.getItem(user)),
+        value: `${user} | ${localStorage.getItem(user)}`,
+      });
+      i += 1;
+    }
 
-  render() {
-    return (
-      <div className="Leaderboard">
-        <Form>
-          <Form.Group size="user" controlId="username">
-            <Form.Label>Leaderboard</Form.Label>
-            <Form.Control
-              autoFocus
-              onChange={this.updateLeaderboard}
-            />
-          </Form.Group>
-          <Button block size="lg" type="submit" onClick={this.login}>
-            Login
-          </Button>
-        </Form>
-      </div>
-    );
-  }
+    const users = archive.sort(((a, b) => b.key - a.key));
+    console.log(users);
+
+    setLeaders(users);
+  }, []);
+
+  return (
+    <ol>
+      {leaders.map((leader) => (
+        <li key={leader.key}>{leader.value}</li>
+      ))}
+    </ol>
+  );
 }
+
+export default Leaderboard;
